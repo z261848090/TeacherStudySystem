@@ -1,8 +1,9 @@
 <?php
 // 交换数据
-include_once 'logic/department.php';
+include_once 'logic/subject.php';
 
-$departmentList = $GLOBALS["department_list"];
+$subjectList = $GLOBALS["subject_list"];
+
 // include head file
 include_once 'template/admin_header.php';
 ?>
@@ -19,21 +20,19 @@ include_once 'template/admin_header.php';
 				<thead>
 					<tr>
 						<th>序号</th>
-						<th>部门组名称</th>
-						<th>人数</th>
+						<th>学科组名称</th>
 						<th>操作</th>
 					</tr>
 				</thead>
 				<tbody>
 					<?php
-					foreach ($departmentList as $key => $department) {
+					foreach ($subjectList as $key => $subject) {
 						echo "<tr>";
-						echo "<td>{$department["id"]}</td>";
-						echo "<td>{$department["title"]}</td>";
-						echo "<td>{$department["num"]}</td>";
+						echo "<td>{$subject["id"]}</td>";
+						echo "<td>{$subject["title"]}</td>";
 						echo "<td>
-						<button onclick='editDepartment({$department["id"]})' class='btn btn-mini btn-primary'><i class=\"icon-edit\"></i> 编辑</button>  
-						<a class='btn btn-mini btn-danger' href='department.php?action=delete&id={$department["id"]}'>
+						<button onclick='editsubject({$subject["id"]})' class='btn btn-mini btn-primary'><i class=\"icon-edit\"></i> 编辑</button>  
+						<a class='btn btn-mini btn-danger' href='subject.php?action=delete&id={$subject["id"]}'>
 						<i class='icon-trash'></i> 删除</a>
 						</td>";
 						echo "</tr>";
@@ -47,25 +46,25 @@ include_once 'template/admin_header.php';
 
 
 <!-- 新增部门的弹出框 -->
-<div id="department-add-modal" class="modal hide fade">
-	<form action="department.php?action=add" method="post">
+<div id="subject-add-modal" class="modal hide fade">
+	<form action="subject.php?action=add" method="post">
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-			<h3>新增部门</h3>
+			<h3>新增学科</h3>
 		</div>
 
 		<div class="modal-body">
 		
 			<div class="control-group">
-	          	<label class="control-label" for="input01">部门名称</label>
+	          	<label class="control-label" for="input01">学科名称</label>
 	          	<div class="controls">
-            		<input placeholder="请输入部门名称" name="title" class="input-xlarge" type="text">
-	            	<small class="help-block"><em>请在该文本框中输入您所要创建的部门的标题</em></small>
+            		<input placeholder="请输入学科名称" name="title" class="input-xlarge" type="text">
+	            	<small class="help-block"><em>请在该文本框中输入您所要创建的学科的标题</em></small>
 	          	</div>
         	</div>
 
 		    <div class="control-group">
-	          	<label class="control-label">部门描述</label>
+	          	<label class="control-label">学科描述</label>
 	          	<div class="controls">
 		            <div class="textarea">
 		                  <textarea class="span5" rows="4" name="description"> </textarea>
@@ -83,24 +82,24 @@ include_once 'template/admin_header.php';
 </div>
 
 <script type="text/javascript">
-function editDepartment(id){
+function editsubject(id){
 	$.ajax({
 		"type":"post",
 		"dataType":"json",
 		"data":{"id":id},
-		"url":"logic/department.ajax.php",
+		"url":"logic/subject.ajax.php",
 		"success":function(data){
-			$modal = $("#department-add-modal");
+			$modal = $("#subject-add-modal");
 			$form = $("form", $modal);
-			$form.attr("action", "department.php?action=update&id="+data.id);
+			$form.attr("action", "subject.php?action=update&id="+data.id);
 			$title = $("h3", $modal);
-			$title.html("编辑部门");
+			$title.html("编辑学科");
 
-			$departmentTitle = $("input[name=title]", $modal);
-			$departmentTitle.val(data.title);
+			$subjectTitle = $("input[name=title]", $modal);
+			$subjectTitle.val(data.title);
 
-			$departmentDescription = $("textarea[name=description]", $modal);
-			$departmentDescription.html(data.description);
+			$subjectDescription = $("textarea[name=description]", $modal);
+			$subjectDescription.html(data.description);
 
 			$button = $("button[type=submit]", $modal);
 			$button.html("编辑");
@@ -114,7 +113,7 @@ function editDepartment(id){
 // open the add modal
 $(document).ready(function(){
 	$("#add-new").click(function(){
-		$("#department-add-modal").modal();
+		$("#subject-add-modal").modal();
 	});
 });
 </script>
