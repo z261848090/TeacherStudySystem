@@ -44,7 +44,7 @@ class Db_Table_Subject extends Mysql{
 	public function getSubjectById($id){
 		$id = intval($id);
 		$sql = "select * from {$this->tableName} where id={$id}";
-		return $this->fetchAll($sql);
+		return $this->fetchOne($sql);
 	}
 
 	public function modifySubject($Subject){

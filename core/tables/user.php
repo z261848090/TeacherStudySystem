@@ -21,12 +21,12 @@ class Db_Table_User extends Mysql{
 		return $this->fetchAll($sql);
 	}
 	
-	public function adddUser($userInfo){
+	public function addUser($userInfo){
 		$username = $this->filterString($userInfo["username"]);
 		$email = $this->filterString($userInfo["email"]);
-		$department = $this->filterString($userInfo["department"]);
+		$departmentId = intval($userInfo["department"]);
 		$password = $this->filterString($userInfo["password"]);
-		$subject = $this->filterString($userInfo["subject"]);
+		$subjectId = intval($userInfo["subject"]);
 		$gender = intval($userInfo["gender"]);
 		$birthday = $userInfo["birthday"];
 		$identity = $this->filterString($userInfo["identity"]);
@@ -47,7 +47,9 @@ class Db_Table_User extends Mysql{
 		$password = md5($password);
 		$createTime = time();
 		
-		$sql = "insert into {$this->tableName} values(
+		$sql = "insert into {$this->tableName}(
+			username, email, password, gender, description, photo, create_time, subject_id, department_id) 
+			values(
 			'{$username}',
 			'{$email}',
 			'{$password}',
@@ -55,7 +57,10 @@ class Db_Table_User extends Mysql{
 			'{$description}',
 			'',
 			{$createTime},
-			
+			{$subjectId},
+			{$departmentId}
 		)";
+		
+		$this->query($sql);
 	}
 }

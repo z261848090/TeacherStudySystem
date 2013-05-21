@@ -1,3 +1,6 @@
+<?php
+$module = $GLOBALS["module"];
+?>
 <!DOCTYPE html>
 <html lang="zh">
   <head>
@@ -29,31 +32,31 @@
             </p>
             <ul class="nav">
               <li class="active"><a href="/">回到主页</a></li>
-              <li><a href="#about">关于</a></li>
-              <li><a href="#contact">联系我们</a></li>
+              <li><a href="about.php">关于</a></li>
+              <li><a href="contactus.php">联系我们</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
+    <div class="container">
+      <div class="row">
+        <div class="span2">
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">基础设置</li>
-              <li class="active"><a href="department.php">部门组设置</a></li>
-              <li><a href="subject.php">学科组设置</a></li>
+              <li <?php if($module == "department") echo "class='active'";?> ><a href="department.php">部门组设置</a></li>
+              <li <?php if($module == "subject") echo "class='active'";?> ><a href="subject.php">学科组设置</a></li>
               <li class="nav-header">主要功能</li>
               <li><a href="#">资源</a></li>
               <li class="nav-header">用户相关</li>
-              <li><a href="#">添加教师</a></li>
-              <li><a href="#">查看教师</a></li>
+              <li <?php if($module == "add_user") echo "class='active'";?> ><a href="adduser.php">添加教师</a></li>
+              <li><a href="teachermanagement.php">查看教师</a></li>
               <li><a href="#">编辑教师</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
 
-        <div class="span7 pull-right">
+    <div class="span8">
         
