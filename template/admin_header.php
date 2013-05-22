@@ -1,5 +1,5 @@
 <?php
-$module = $GLOBALS["module"];
+include('global.php');
 ?>
 <!DOCTYPE html>
 <html lang="zh">
@@ -49,7 +49,7 @@ $module = $GLOBALS["module"];
               <li <?php if($module == "department") echo "class='active'";?> ><a href="department.php">部门组设置</a></li>
               <li <?php if($module == "subject") echo "class='active'";?> ><a href="subject.php">学科组设置</a></li>
               <li class="nav-header">主要功能</li>
-              <li><a href="#">资源</a></li>
+              <li><a href="admin_resource.php">资源</a></li>
               <li class="nav-header">用户相关</li>
               <li <?php if($module == "add_user") echo "class='active'";?> ><a href="adduser.php">添加教师</a></li>
               <li><a href="teachermanagement.php">查看教师</a></li>

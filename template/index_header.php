@@ -30,7 +30,7 @@ include('global.php');
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="index.php">首页</a></li>
-							<li><a href="#">教师课程</a></li>
+							<li><a href="index_resource.php">教师课程</a></li>
 							<li><a href="index_teachermanagement.php">教师资源</a></li>
 							<li><a href="index_department.php">部门</a></li>
 							<li><a href="index_subject.php">学科</a></li>
