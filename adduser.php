@@ -5,10 +5,8 @@ include_once 'logic/adduser.php';
 if(!empty($GLOBALS["userinfo"])){
 	$userInfo = $GLOBALS["userinfo"];
 }
-
 $departmentList = $GLOBALS["departmentList"];
 $subjectList = $GLOBALS["subjectList"];
-
 $GLOBALS["module"] = "add_user";
 // include head file
 include_once 'template/admin_header.php';
@@ -69,11 +67,7 @@ include_once 'template/admin_header.php';
 		<div class="row">
 			<div class="span4 input-prepend">
 				<span class="add-on">性别 </span>
-				<label class="checkbox inline">
-					<input type="radio" value="1"  name="gender" <?php if($userInfo["gender"] == 1) echo "checked" ?> /> 男
-				</label>
-				<label class="checkbox inline">
-					<input type="radio" value="0" name="gender" <?php if($userInfo["gender"] == 0) echo "checked" ?> /> 女
+				<input type="text" placeholder="请输入性别" name="gender" class="span3"  value="<?php echo $userInfo["gender"]; ?>"/>
 				</label>
 			</div>
 			
@@ -86,7 +80,7 @@ include_once 'template/admin_header.php';
 		<div class="row">
 			<div class="span4 input-prepend">
 				<span class="add-on">身份证号</span>
-				<input type="text" placeholder="请输入身份证号" name="identity" class="span3"  value="<?php echo $userInfo["identity"];  ?>"/>
+				<input type="text" placeholder="请输入身份证号" name="identity" class="span3"  value="<?php echo $userInfo["identity"]; ?>"/>
 			</div>
 			
 			<div class="span4 input-prepend">
@@ -114,20 +108,13 @@ include_once 'template/admin_header.php';
 			
 			<div class="span4 input-prepend">
 				<span class="add-on">学历</span>
-				<select name="degree">
-					<option value="0" <?php if($userInfo["degree"] == 0) echo "selected"; ?> >==请选择==</option>
-					<option value="1" <?php if($userInfo["degree"] == 1) echo "selected"; ?>>本科</option>
-				</select>
+				<input type="text" name="degree" class="span3" placeholder="请输入您的学历" value="<?php echo $userInfo["degree"]; ?>" />
 			</div>
 		</div>
 		<div class="row">
 			<div class="span4 input-prepend">
 				<span class="add-on">职称</span>
-				<select name="titles">
-					<option value="0" <?php if($userInfo["titles"] == 0) echo "selected"; ?>>==请选择==</option>
-					<option value="1" <?php if($userInfo["titles"] == 1) echo "selected"; ?>>讲师</option>
-					<option value="2" <?php if($userInfo["titles"] == 2) echo "selected"; ?>>导师</option>
-				</select>
+				<input type="text" name="titles" class="span3" placeholder="请输入您的职务" value="<?php echo $userInfo["titles"]; ?>" />
 			</div>
 			<div class="span4 input-prepend">
 				<span class="add-on">职务</span>

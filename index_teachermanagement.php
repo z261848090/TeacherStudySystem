@@ -1,5 +1,13 @@
 <?php
 require_once 'global.php';
+require_once TABLE_ROOT."user.php";
+require_once TABLE_ROOT."subject.php";
+require_once TABLE_ROOT."department.php";
+$dbUser = new Db_Table_User();
+$dbDepartment = new Db_Table_Department();
+$dbSubject = new Db_Table_Subject();
+$userList = $dbUser->getUserList();
+debug($userinfo);
 include_once 'template/index_header.php';
 ?>
 
@@ -19,7 +27,6 @@ include_once 'template/index_header.php';
 				<thead>
 					<tr>
 						<th>序号</th>
-						<th>用户名</th>
 						<th>姓名</th>
 						<th>所在部门</th>
 						<th>所在学科</th>
@@ -35,7 +42,27 @@ include_once 'template/index_header.php';
 					</tr>
 				</thead>
 				<tbody>
-					
+				<?php
+				foreach ($userList as $key => $value) {
+					echo "<tr>";
+					echo "<td>{$value["id"]}</td>";
+					echo "<td>{$value["username"]}</td>";
+					$subject = $dbSubject->getSubjectById($value["subject_id"]);
+					$department = $dbDepartment->getDepartmentById($value["department_id"]);
+					echo "<td>{$department["title"]}</td>";
+					echo "<td>{$subject["title"]}</td>";
+					echo "<td>{$value["gender"]}</td>";
+					echo "<td>{$value["birthday"]}</td>";
+					echo "<td>{$value["identity"]}</td>";
+					echo "<td>{$value["tel"]}</td>";
+					echo "<td>{$value["phone"]}</td>";
+					echo "<td>{$value["nation"]}</td>";
+					echo "<td>{$value["degree"]}</td>";
+					echo "<td>{$value["titles"]}</td>";
+					echo "<td>{$value["position"]}</td>";
+					echo "</tr>";
+				}
+				?>
 				</tbody>
 			</table>
 		</div>

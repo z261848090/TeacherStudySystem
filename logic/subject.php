@@ -29,4 +29,7 @@ if($action == "delete") {
 
 // Ready the display 
 $subjectList = $dbSubject->getSubjectList();
+foreach ($subjectList as $key => &$value) {
+	$value["num"] = $dbSubject->getTeacherNumber($value["id"]);
+}
 $GLOBALS["subject_list"] = $subjectList;

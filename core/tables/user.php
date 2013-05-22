@@ -27,40 +27,73 @@ class Db_Table_User extends Mysql{
 		$departmentId = intval($userInfo["department"]);
 		$password = $this->filterString($userInfo["password"]);
 		$subjectId = intval($userInfo["subject"]);
-		$gender = intval($userInfo["gender"]);
+		$gender = ($userInfo["gender"]);
 		$birthday = $userInfo["birthday"];
 		$identity = $this->filterString($userInfo["identity"]);
 		$tel = $this->filterString($userInfo["tel"]);
 		$phone = $this->filterString($userInfo["phone"]);
 		$nation = $this->filterString($userInfo["nation"]);
-		$degree = intval($userInfo["degree"]);
-		$titles = intval($userInfo["titles"]);
+		$degree = ($userInfo["degree"]);
+		$titles = ($userInfo["titles"]);
 		$position = $this->filterString($userInfo["position"]);
 		$description = $userInfo["description"];
-		
-		$birthday = explode("-", $birthday);
-		$year = $birthday[0];
-		$month = $birthday[1];
-		$day = $birthday[2];
-		$birthday = mktime(null,null,null,$month, $day, $year);
 		
 		$password = md5($password);
 		$createTime = time();
 		
 		$sql = "insert into {$this->tableName}(
-			username, email, password, gender, description, photo, create_time, subject_id, department_id) 
+			username, email, password, gender, description, photo, create_time, subject_id, department_id,birthday,identity,tel,phone,nation,degree,titles,position) 
 			values(
 			'{$username}',
 			'{$email}',
 			'{$password}',
-			{$gender},
+			'{$gender}',
 			'{$description}',
 			'',
 			{$createTime},
 			{$subjectId},
-			{$departmentId}
+			{$departmentId},
+			'{$birthday}',
+			'{$identity}',
+			'{$tel}',
+			'{$phone}',
+			'{$nation}',
+			'{$degree}',
+			'{$titles}',
+			'{$position}'
 		)";
 		
 		$this->query($sql);
+	}
+
+	public function getUserList(){
+		$sql = "select * from {$this->tableName}";
+		return $this->fetchAll($sql);
+	}
+
+
+	public function getUserinfoById($id){
+		$id = intval($id);
+		$sql = "select * from {$this->tableName} where id={$id}";
+		return $this->fetchOne($sql);
+	}
+
+	public function deleteUserinfo($id){
+		$id = intval($id);
+		$sql = "delete from {$this->tableName} where id={$id}";
+		return $this->query($sql);
+	}
+
+	public function getUserinfoByTitle($title){
+		$title = $this->filterString($title);
+		$sql = "select * from {$this->tableName} where title = '{$title}'";
+		return $this->fetchAll($sql);
+	}
+
+	public function getTeacherNumber($id){
+		$id = intval($id);
+		$sql = "select count(id) as num from tss_user where id={$id}";
+		$res = $this->fetchOne($sql);
+		return $res["num"];
 	}
 }

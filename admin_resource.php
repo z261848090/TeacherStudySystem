@@ -3,7 +3,7 @@ include_once 'template/admin_header.php';
 ?>
 
 <div class="container">
-	<legend>编辑教师</legend>
+	<legend>资源管理</legend>
 	<form class="form-search" style="margin-bottom:20px;">
 		<laber>资源名称:</laber>
 		<input type="text" class="input-medium search-query" placeholder="任选一个查询">

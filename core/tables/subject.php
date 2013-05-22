@@ -55,4 +55,10 @@ class Db_Table_Subject extends Mysql{
 		$this->query($sql);
 	}
 
+	public function getTeacherNumber($id){
+		$id = intval($id);
+		$sql = "select count(id) as num from tss_user where id={$id}";
+		$res = $this->fetchOne($sql);
+		return $res["num"];
+	}
 }
