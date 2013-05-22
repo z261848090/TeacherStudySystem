@@ -31,7 +31,9 @@ include('global.php');
 						<ul class="nav">
 							<li class="active"><a href="index.php">首页</a></li>
 							<li><a href="#">教师课程</a></li>
-							<li><a href="#">教师资源</a></li>
+							<li><a href="index_teachermanagement.php">教师资源</a></li>
+							<li><a href="index_department.php">部门</a></li>
+							<li><a href="index_subject.php">学科</a></li>
 							<li><a href="department.php">后台</a></li>
 							<li class="dropdown">
 								<a class="dropdown-toggle"  data-toggle="dropdown" href="#">
@@ -40,8 +42,7 @@ include('global.php');
 								</a>
 								<ul class="dropdown-menu">
 									<li><a href="about.php">关于该作品</a></li>
-									<li><a href="#">关于配置环境</a></li>
-									<li><a href="#">关于该作品的亮点</a></li>
+									<li><a href="Configuration.php">关于配置环境</a></li>
 									<li class="divider"></li>
 									<li class="nav-header">其他</li>
 									<li><a href="contactus.php"><i class="icon-envelope"></i> 如何联系我</a></li>

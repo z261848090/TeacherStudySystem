@@ -4,8 +4,8 @@ include_once 'template/index_header.php';
 <div class="container">
     <div class="jumbotron text-center">
         <h1>联系我们</h1>
-        <p class="lead">电话：13858144745</p>
-        <p class="lead">邮箱：ynxyzgh123@sina.com</p>
+        <p class="lead">电话：138xxxxxxxx</p>
+        <p class="lead">邮箱：ynxyzgh123@xxxx.com</p>
         <p class="lead">地址：杭州电子科技大学</p>
         <p class="lead">邮编：310018</p>
         <p class="lead">传真：0571-xxxxxxxx</p>

@@ -48,6 +48,8 @@ include_once 'template/index_header.php';
         的需求，促使我们下决心研究开发一种综合性的网络研修系统，以推动学校教研、
         教学工作的信息化和网络化。
     </p>
+    <hr>
+    <h3>为此特别打造毕业设计“中小学教师研修管理系统”</h3>
 </div>
 <?php 
 include_once 'template/index_footer.php';

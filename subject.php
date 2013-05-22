@@ -13,6 +13,7 @@ include_once 'template/admin_header.php';
 
 <div class="row">
 	<div class="span6">
+		<legend>学科组设置</legend>
 		<div class="row" style="margin-bottom:20px;">
 			<button class="btn btn-primary pull-right" id="add-new">新增</button>
 		</div>
