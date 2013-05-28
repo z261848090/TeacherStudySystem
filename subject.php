@@ -6,7 +6,7 @@ $subjectList = $GLOBALS["subject_list"];
 
 $GLOBALS["module"] = "subject";
 // include head file
-include_once 'template/admin_header.php';
+include_once 'template/user_header.php';
 ?>
 
 
@@ -23,6 +23,7 @@ include_once 'template/admin_header.php';
 				<tr>
 					<th>序号</th>
 					<th>学科组名称</th>
+					<th>人数</th>
 					<th>操作</th>
 				</tr>
 			</thead>
@@ -32,6 +33,7 @@ include_once 'template/admin_header.php';
 					echo "<tr>";
 					echo "<td>{$subject["id"]}</td>";
 					echo "<td>{$subject["title"]}</td>";
+					echo "<td>{$subject["num"]}</td>";
 					echo "<td>
 					<button onclick='editsubject({$subject["id"]})' class='btn btn-mini btn-primary'><i class=\"icon-edit\"></i> 编辑</button>  
 					<a class='btn btn-mini btn-danger' href='subject.php?action=delete&id={$subject["id"]}'>
@@ -150,5 +152,5 @@ $(document).ready(function(){
 </script>
 
 <?php
-include_once 'template/admin_footer.php'; 
+include_once 'template/user_footer.php'; 
 ?>

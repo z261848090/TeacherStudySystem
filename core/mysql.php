@@ -13,6 +13,7 @@ class Mysql {
 		
 		mysql_select_db($config["dbname"], $this->_connect) 
 		or error("无法找到数据库，请确认数据库名称正确！".mysql_error());
+		@mysql_query("SET NAMES UTF8");
 	}
 	
 	public function __destruct(){

@@ -57,7 +57,7 @@ class Db_Table_Subject extends Mysql{
 
 	public function getTeacherNumber($id){
 		$id = intval($id);
-		$sql = "select count(id) as num from tss_user where id={$id}";
+		$sql = "select count(subject_id) as num from tss_user where subject_id={$id}";
 		$res = $this->fetchOne($sql);
 		return $res["num"];
 	}

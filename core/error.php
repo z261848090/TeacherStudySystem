@@ -1,4 +1,11 @@
 <?php
+/**
+ * @category core program
+ * @uses define the function used frequently
+ * @author Zhu.Guohui
+ * @copyright www.hdu.edu.cn
+ */
+
 function getSource($file, $line){
 	if(!(file_exists($file) && is_file($file))){
 		return "";

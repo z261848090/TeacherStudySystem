@@ -30,11 +30,11 @@ include('global.php');
 					<div class="nav-collapse collapse">
 						<ul class="nav">
 							<li class="active"><a href="index.php">首页</a></li>
-							<li><a href="index_resource.php">教师课程</a></li>
-							<li><a href="index_teachermanagement.php">教师资源</a></li>
+							<li><a href="index_resource.php">资源</a></li>
+							<li><a href="index_teachermanagement.php">教师信息</a></li>
 							<li><a href="index_department.php">部门</a></li>
 							<li><a href="index_subject.php">学科</a></li>
-							<li><a href="department.php">后台</a></li>
+							<li><a href="index_course.php">课程</a></li>
 							<li class="dropdown">
 								<a class="dropdown-toggle"  data-toggle="dropdown" href="#">
 									关于
@@ -60,10 +60,13 @@ include('global.php');
 						</form>
 						<?php else:?>
 					    <div class="btn-group pull-right">
-						    <a class="btn btn-small" href="#"><i class="icon-user"></i> <?php echo $_SESSION["user_login"]["username"]; ?></a>
+						    <a class="btn btn-small" href="login_welcome.php"><i class="icon-user"></i> <?php echo $_SESSION["user_login"][0]["username"]; ?></a>
 						    <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
 						    <ul class="dropdown-menu">
-							    <li><a href="#"><i class="icon-wrench"></i> 编辑</a></li>
+							    <li><a href="editteacher.php"><i class="icon-wrench"></i> 编辑</a></li>
+							    <?php if (($_SESSION["user_login"][0]["permission"]) == 1):?>
+							    <li><a href="Permission_settings.php"><i class="icon-wrench"></i> 权限控制</a></li>
+								<?php endif;?>
 							    <li class="divider"></li>
 							    <li><a href="logic/logout.php"><i class="icon-off"></i> 退出</a></li>
 						    </ul>

@@ -1,8 +1,8 @@
 <?php
 require_once(CORE_PATH."config.php");
 
-class Db_Table_Department extends Mysql{
-	private $tableName = "department";
+class Db_Table_Course extends Mysql{
+	private $tableName = "course";
 	public function __construct(){
 		if(empty($GLOBALS["database"])){
 			error("缺少数据库配置");
@@ -15,47 +15,51 @@ class Db_Table_Department extends Mysql{
 		parent::__destruct();
 	}
 
-	public function addDepartment($department){
-		$title = $this->filterString($department["title"]);
-		$description = $this->filterString($department["description"]);
-		$sql = "insert into {$this->tableName}(title, description) values('{$title}', '$description')";
+	public function addCourse($course){
+		$title = $this->filterString($course["title"]);
+		$description = $this->filterString($course["description"]);
+		$department = $this->filterString($course["department"]);
+		$subject = $this->filterString($course["subject"]);
+		$sql = "insert into {$this->tableName}(title, description,department,subject) values('{$title}', '$description','$department','$subject')";
 		return $this->query($sql);
 	}
 
-	public function deleteDepartment($id){
+	public function deleteCourse($id){
 		$id = intval($id);
 		$sql = "delete from {$this->tableName} where id={$id}";
 		return $this->query($sql);
 	}
 
-	public function getDepartmentList(){
+	public function getCourseList(){
 		$sql = "select * from {$this->tableName}";
 		return $this->fetchAll($sql);
 	}
 
-	public function getDepartmentByTitle($title){
+	public function getCourseByTitle($title){
 		$title = $this->filterString($title);
 		$sql = "select * from {$this->tableName} where title = '{$title}'";
 		return $this->fetchAll($sql);
 	}
 
-	public function getDepartmentByTitles($title){
+	public function getCourseByTitles($title){
 		$title = $this->filterString($title);
 		$sql = "select * from {$this->tableName} where title = '{$title}'";
 		return $this->fetchOne($sql);
 	}
 
-	public function getDepartmentById($id){
+	public function getCourseById($id){
 		$id = intval($id);
 		$sql = "select * from {$this->tableName} where id={$id}";
 		return $this->fetchOne($sql);
 	}
 
-	public function modifyDepartment($department){
-		$id = intval($department["id"]);
-		$title = $this->filterString($department["title"]);
-		$description = $this->filterString($department["description"]);
-		$sql = "update {$this->tableName} set title = '{$title}', description = '{$description}' where id={$id}";
+	public function modifyCourse($course){
+		$id = intval($course["id"]);
+		$title = $this->filterString($course["title"]);
+		$description = $this->filterString($course["description"]);
+		$department = $this->filterString($course["department"]);
+		$subject = $this->filterString($course["subject"]);
+		$sql = "update {$this->tableName} set title = '{$title}', description = '{$description}' ,department = '{$department}' ,subject = '{$subject}' where id={$id}";
 		$this->query($sql);
 	}
 

@@ -1,15 +1,5 @@
-<?php
-// 交换数据
-include_once 'logic/adduser.php';
-
-if(!empty($GLOBALS["userinfo"])){
-	$userInfo = $GLOBALS["userinfo"];
-}
-$departmentList = $GLOBALS["departmentList"];
-$subjectList = $GLOBALS["subjectList"];
-$GLOBALS["module"] = "add_user";
-// include head file
-include_once 'template/user_header.php';
+﻿<?php
+include_once 'template/index_header.php';
 ?>
 
 <script>
@@ -35,12 +25,13 @@ function chkform(){
 }
 </script>
 
-<form name="myform" class="form" action="adduser.php" method="post" onsubmit="return chkform()">
+
+<form name="myform" class="container" action="logic/adduser.php" method="post" onsubmit="return chkform()">
 	<fieldset>
 		<legend>入校</legend>
 		<div class="row">
 			<div class="span4 input-prepend">
-				<span class="add-on">用户名*</span>
+				<span class="add-on">姓名*</span>
 				<input type="text" value="<?php echo $userInfo["username"]; ?>" placeholder="请输入用户名" name="username" class="span3"/>
 			</div>
 			
@@ -186,7 +177,6 @@ $(document).ready(function(){
 });
 </script>
 
-<?php 
-// inlcude footer file
-include_once 'template/user_footer.php';
+<?php
+include_once 'template/index_footer.php'; 
 ?>

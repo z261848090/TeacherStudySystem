@@ -7,20 +7,30 @@ $dbUser = new Db_Table_User();
 $dbDepartment = new Db_Table_Department();
 $dbSubject = new Db_Table_Subject();
 $userList = $dbUser->getUserList();
-include_once 'template/admin_header.php';
+$GLOBALS["module"] = "look_teacher";
+//$userListByOne = $dbUser->getUserListByOne();
+
+
+if(!empty($_POST)) {
+	$userName = $_POST["username"];
+	$userList = array();
+	$userList[0] = $dbUser->getUserinfoByUsername($userName);
+}
+
+include_once 'template/user_header.php';
 ?>
 
-<form class="form">
+<div >
 	<legend>用户管理</legend>
+
+	<form class="form-search" method="post" action="teachermanagement.php">
+	    <div class="input-append">
+		    <input type="text" name = "username"  class="span2 search-query" placeholder="输入用户名查找" />
+		    <button type="submit" class="btn btn-primary">查找</button>
+	    </div>
+	</form>
+
 	<div>
-		<form class="form-search" style="margin-bottom:20px;">
-			<laber>用户名:</laber>
-		    <input type="text" class="input-medium search-query">
-		    <laber>姓名:</laber>
-		    <input type="text" class="input-medium search-query">
-		    <button type="search" class="btn btn-primary">查找</button>
-	    </form>
-	    <hr>
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -42,6 +52,7 @@ include_once 'template/admin_header.php';
 			<tbody>
 				<?php
 				foreach ($userList as $key => $value) {
+					if (($value["id"]) != 0){
 					echo "<tr>";
 					echo "<td>{$value["id"]}</td>";
 					echo "<td>{$value["username"]}</td>";
@@ -59,14 +70,15 @@ include_once 'template/admin_header.php';
 					echo "<td>{$value["titles"]}</td>";
 					echo "<td>{$value["position"]}</td>";
 					echo "</tr>";
+					}
 				}
 				?>
 			</tbody>
 		</table>
 	</div>
-</form>
+</div>
 
 
 <?php
-include_once 'template/admin_footer.php';
+include_once 'template/user_footer.php';
 ?>

@@ -7,7 +7,7 @@ $departmentList = $GLOBALS["department_list"];
 
 $GLOBALS["module"] = "department";
 // include head file
-include_once 'template/admin_header.php';
+include_once 'template/user_header.php';
 ?>
 
 <div class="row">
@@ -153,5 +153,5 @@ $(document).ready(function(){
 </script>
 
 <?php
-include_once 'template/admin_footer.php'; 
+include_once 'template/user_footer.php'; 
 ?>

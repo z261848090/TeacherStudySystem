@@ -14,11 +14,6 @@ include_once 'template/index_header.php';
 	<div class="row">
 		<div class="span6">
 			<legend>学科组</legend>
-			<form class="form-search" style="margin-bottom:40px;">
-			    <laber>学科名:</laber>
-			    <input type="text" class="input-larger search-query" placeholder="请输入需要查找的学科名">
-			    <button type="search" class="btn btn-primary">查找</button>
-	    	</form>
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
@@ -59,7 +54,6 @@ include_once 'template/index_header.php';
 		          	<label class="control-label" for="input01">学科名称</label>
 		          	<div class="controls">
 	            		<input placeholder="请输入学科名称" name="title" class="input-xlarge" type="text">
-		            	<small class="help-block"><em>请在该文本框中输入您所要创建的学科的标题</em></small>
 		          	</div>
 	        	</div>
 
